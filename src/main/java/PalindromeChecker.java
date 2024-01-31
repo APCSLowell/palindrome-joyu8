@@ -35,15 +35,50 @@ public void tester()
     }
   }
 }
-public boolean palindrome(String word)
+public boolean isPalindrome(String word)
 {
-  //your code here
+  String aa = noCapitals(word);
+  aa = onlyLetters(aa);
+  aa = noSpaces(aa);
+  if(reverse(word).equals(aa))
+    return true;
   return false;
 }
+
+public String noCapitals(String sWord){
+  return(sWord.toLowerCase());
+}
+
+public String noSpaces(String sWord){
+  String e = "";
+  for(int i = 0; i < sWord.length(); i++){
+    if(sWord.charAt(i) != (' ')){
+      e = e + sWord.substring(i, i+1);
+    }
+  }
+  return e;
+}
+
+public String onlyLetters(String sString){
+  String ee = "";
+  for(int i = 0; i < sString.length(); i++){
+    if(Character.isLetter(sString.charAt(i)))
+      ee = ee + sString.charAt(i);
+  }
+  return ee;
+}
+
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
-    return sNew;
+  String aa = noCapitals(str);
+  aa = onlyLetters(aa);
+  aa = noSpaces(aa);
+    
+  String ee = "";
+  if(aa.length() < 2)
+    return str;
+  for(int i = aa.length(); i > 0; i--)
+    ee = ee + aa.substring(i-1, i);
+  return ee;
 }
 }
